@@ -68,7 +68,7 @@
               .contents__detail__box__set__box__nini
                 任意
             .contents__detail__box__set__form
-              = f.collection_select :brand_id, @brand_array, {}, {class: 'contents__detail__box__set__form__detail__select'}
+              = f.select :brand_id, @brand_array, {}, {class: 'contents__detail__box__set__form__detail__select'}
           .contents__detail__box__set
             .contents__detail__box__set__box
               .contents__detail__box__set__box__text
