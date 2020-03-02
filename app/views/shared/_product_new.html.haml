@@ -4,13 +4,13 @@
       .contents__header
         .contents__header_text
           商品の情報を入力
-      -# .contents__message
-      -#   - if flash[:error].present?
-      -#     %ul.error_messages
-      -#       = "Error : #{flash[:error].count}"
-      -#       - flash[:error].each do |e|
-      -#         %li
-      -#           = e
+      .contents__message
+        - if flash[:error].present?
+          %ul.error_messages
+            = "Error : #{flash[:error].count}"
+            - flash[:error].each do |e|
+              %li
+                = e
       .contents__image
         .contents__image__box
           .contents__image__box__comment
@@ -21,22 +21,22 @@
           %p 最大10枚までアップロードできます
           .contents__image__box__container
             .contents__image__box__container__drop-box
-      -#         #image-box
-      -#           #previews
-      -#             - if @product.persisted?
-      -#               - @product.images.each_with_index do |image, i|
-      -#                 = image_tag image.image.url, data: { index: i }, width: "100", height: '100'
-      -#           = f.fields_for :images do |image|
-      -#             .js-file_group{"data-index" => "#{image.index}"}
-      -#               = image.file_field :image, class: 'js-file'
-      -#               %span.js-remove 削除
-      -#             - if @product.persisted?
-      -#               = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
-      -#           - if @product.persisted?
-      -#             .js-file_group{"data-index" => "#{@product.images.count}"}
-      -#               = file_field_tag :image, name: "product[images_attributes][#{@product.images.count}][image]", class: 'js-file'
-      -#               %span.js-remove 削除
-      -# .contents__product
+              #image-box
+                #previews
+                  - if @product.persisted?
+                    - @product.images.each_with_index do |image, i|
+                      = image_tag image.image.url, data: { index: i }, width: "100", height: '100'
+                = f.fields_for :images do |image|
+                  .js-file_group{"data-index" => "#{image.index}"}
+                    = image.file_field :image, class: 'js-file'
+                    %span.js-remove 削除
+                  - if @product.persisted?
+                    = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+                - if @product.persisted?
+                  .js-file_group{"data-index" => "#{@product.images.count}"}
+                    = file_field_tag :image, name: "product[images_attributes][#{@product.images.count}][image]", class: 'js-file'
+                    %span.js-remove 削除
+      .contents__product
         .contents__product__area 
           .contents__product__area__name
             .contents__product__area__name__text

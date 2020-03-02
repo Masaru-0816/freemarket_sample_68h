@@ -5,13 +5,13 @@
       .contents__header
         .contents__header_text
           商品の情報を入力
-      -# .contents__message
-      -#   - if flash[:error].present?
-      -#     %ul.error_messages
-      -#       = "You have #{flash[:error].count} errors."
-      -#       - flash[:error].each do |e|
-      -#         %li
-      -#           = e
+      .contents__message
+        - if flash[:error].present?
+          %ul.error_messages
+            = "You have #{flash[:error].count} errors."
+            - flash[:error].each do |e|
+              %li
+                = e
       .contents__image
         .contents__image__box
           .contents__image__box__comment
@@ -22,21 +22,21 @@
           %p 最大10枚までアップロードできます
           .contents__image__box__container
             .contents__image__box__container__drop-box
-              -# #image-box
-              -#   #previews
-              -#     - if @product.persisted?
-              -#       - @product.images.each_with_index do |image, i|
-              -#         = image_tag image.image.url, data: { index: i }, width: "100", height: '100'
-              -#   = f.fields_for :images do |image|
-              -#     .js-file_group{"data-index" => "#{image.index}"}
-              -#       = image.file_field :image, class: 'js-file'
-              -#       %span.js-remove 削除
-              -#     - if @product.persisted?
-              -#       = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
-              -#   - if @product.persisted?
-              -#     .js-file_group{"data-index" => "#{@product.images.count}"}
-              -#       = file_field_tag :image, name: "product[images_attributes][#{@product.images.count}][image]", class: 'js-file'
-              -#       %span.js-remove 削除
+              #image-box
+                #previews
+                  - if @product.persisted?
+                    - @product.images.each_with_index do |image, i|
+                      = image_tag image.image.url, data: { index: i }, width: "100", height: '100'
+                = f.fields_for :images do |image|
+                  .js-file_group{"data-index" => "#{image.index}"}
+                    = image.file_field :image, class: 'js-file'
+                    %span.js-remove 削除
+                  - if @product.persisted?
+                    = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+                - if @product.persisted?
+                  .js-file_group{"data-index" => "#{@product.images.count}"}
+                    = file_field_tag :image, name: "product[images_attributes][#{@product.images.count}][image]", class: 'js-file'
+                    %span.js-remove 削除
       .contents__product
         .contents__product__area 
           .contents__product__area__name
@@ -68,15 +68,15 @@
                 必須
             .contents__detail__box__set__form
               .contents__detail__box__set__form__detail
-                -# - id = @product.category.parent.parent.id
-                -# = f.select :category_id, id, {}, {class: 'contents__detail__box__set__form__detail__select', id: 'parent_category'} do
-                -#   %option{value: "#{@product.category.parent.parent.id}",class: "root"} #{@product.category.parent.parent.name}
-                -#   - @parents.each do |parent|
-                -#     %option{value: "#{parent.id}"} #{parent.name}
-                -# = f.select :category_id, @product.category.parent.id, {}, {class: 'contents__detail__box__set__form__detail__select', id: "children_category"} do
-                -#   %option{value: "#{@product.category.parent.id}",class: "root"} #{@product.category.parent.name}
-                -# = f.select :category_id, @category.name, {}, {class: 'contents__detail__box__set__form__detail__select', id: 'grandchildren_category'} do
-                -#   %option{value: "#{@product.category.id}",class: "root"} #{@product.category.name}
+                - id = @product.category.parent.parent.id
+                = f.select :category_id, id, {}, {class: 'contents__detail__box__set__form__detail__select', id: 'parent_category'} do
+                  %option{value: "#{@product.category.parent.parent.id}",class: "root"} #{@product.category.parent.parent.name}
+                  - @parents.each do |parent|
+                    %option{value: "#{parent.id}"} #{parent.name}
+                = f.select :category_id, @product.category.parent.id, {}, {class: 'contents__detail__box__set__form__detail__select', id: "children_category"} do
+                  %option{value: "#{@product.category.parent.id}",class: "root"} #{@product.category.parent.name}
+                = f.select :category_id, @category.name, {}, {class: 'contents__detail__box__set__form__detail__select', id: 'grandchildren_category'} do
+                  %option{value: "#{@product.category.id}",class: "root"} #{@product.category.name}
           .contents__detail__box__set
             .contents__detail__box__set__box
               .contents__detail__box__set__box__text
@@ -84,7 +84,7 @@
               .contents__detail__box__set__box__nini
                 任意
             .contents__detail__box__set__form
-              -# = f.select :brand_id, options_for_select(@brand_array, selected: @product.brand_id)
+              = f.select :brand_id, options_for_select(@brand_array, selected: @product.brand_id)
           .contents__detail__box__set
             .contents__detail__box__set__box
               .contents__detail__box__set__box__text
@@ -92,7 +92,7 @@
               .contents__detail__box__set__box__coution
                 必須
             .contents__detail__box__set__form_select
-              -# = f.collection_select :condition_id, Condition.all, :id, :name, prompt: "--"
+              = f.collection_select :condition_id, Condition.all, :id, :name, prompt: "--"
 
       .contents__detail
         .contents__detail__box

@@ -18,28 +18,28 @@ class ProductsController < ApplicationController
   def create
     @user = current_user
     @product = Product.new(product_params)
-    # if @product.save
-    #   redirect_to product_path(@product.id)
-    # else
-    #   redirect_to new_product_path, flash: { error: @product.errors.full_messages }
-    # end
+    if @product.save
+      redirect_to product_path(@product.id)
+    else
+      redirect_to new_product_path, flash: { error: @product.errors.full_messages }
+    end
   end
 
   def edit
     @product = Product.find(params[:id])
     @brand = Brand.find(@product.brand_id)
     @category = Category.find(params[:id])
-    # @parents = Category.all.order("ancestry ASC").limit(13)
+    @parents = Category.all.order("ancestry ASC").limit(13)
   end
 
   def update
     product = Product.find(params[:id])
     product.update(product_params)
-    # if product.save
-    #   redirect_to product_path(product.id)
-    # else
-    #   redirect_to edit_product_path, flash: { error: product.errors.full_messages }
-    # end
+    if product.save
+      redirect_to product_path(product.id)
+    else
+      redirect_to edit_product_path, flash: { error: product.errors.full_messages }
+    end
   end
 
   def show
