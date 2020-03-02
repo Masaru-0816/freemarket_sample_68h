@@ -108,9 +108,9 @@
               .contents__detail__box__set__box__coution
                 必須
             .contents__detail__box__set__form
-              -# = f.collection_select :payment_id, Payment.all, :id, :name, prompt: "--"
+              = f.collection_select :payment_id, Payment.all, :id, :name, prompt: "--"
             .contents__detail__box__set__form__method
-              -# = f.collection_select :delivery_method_id, DeliveryMethod.all, :id, :name, prompt: "--"
+              = f.collection_select :delivery_method_id, DeliveryMethod.all, :id, :name, prompt: "--"
           .contents__detail__box__set
             .contents__detail__box__set__box
               .contents__detail__box__set__box__text
@@ -118,7 +118,7 @@
               .contents__detail__box__set__box__coution
                 必須
             .contents__detail__box__set__form
-              -# = f.collection_select :prefecture_id, @prefecture ,:id, :name, {prompt: '選択してください'}, {class: 'contents__detail__box__set__form__detail__select'}
+              = f.collection_select :prefecture_id, @prefecture ,:id, :name, {prompt: '選択してください'}, {class: 'contents__detail__box__set__form__detail__select'}
           .contents__detail__box__set
             .contents__detail__box__set__box
               .contents__detail__box__set__box__text
@@ -126,7 +126,7 @@
               .contents__detail__box__set__box__coution
                 必須
             .contents__detail__box__set__form
-              -# = f.collection_select :delivery_date_id, DeliveryDate.all, :id, :name, prompt: "--"
+              = f.collection_select :delivery_date_id, DeliveryDate.all, :id, :name, prompt: "--"
       .contents__price
         .contents__price__text
           .contents__price__text__icon
@@ -142,7 +142,7 @@
                 .contents__price__value__first__left__box__coution
                   必須
             .contents__price__value__first__right
-              -# = f.number_field :price, min:300, max:9999999,class: "contents__price__value__first__right__input",id: "input_price", style: "text-align:right;"
+              = f.number_field :price, min:300, max:9999999,class: "contents__price__value__first__right__input",id: "input_price", style: "text-align:right;"
               円
           .contents__price__value__second
             .contents__price__value__second__left
