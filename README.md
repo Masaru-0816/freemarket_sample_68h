@@ -1,27 +1,30 @@
 ## README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# FURIMA
 
-Things you may want to cover:
+Foobar is a Python library for dealing with word pluralization.
 
-* Ruby version
+## Installation
 
-* System dependencies
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
-* Configuration
+```bash
+pip install foobar
+```
 
-* Database creation
+## Usage
 
-* Database initialization
+```python
+import foobar
 
-* How to run the test suite
+foobar.pluralize('word') # returns 'words'
+foobar.pluralize('goose') # returns 'geese'
+foobar.singularize('phenomena') # returns 'phenomenon'
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
 
-* Deployment instructions
-
-* ...
 
 # freemarket_sample_68th DB設計
 ## usersテーブル
